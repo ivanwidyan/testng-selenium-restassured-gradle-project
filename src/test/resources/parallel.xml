@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="tests" thread-count="3">
+
+    <test verbose="2" preserve-order="true" name="Search google in chrome parallel">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="keyword" value="ivan"/>
+        <classes>
+            <class name="web.SearchTest"/>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="Search google in firefox parallel">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="keyword" value="qa"/>
+        <classes>
+            <class name="web.SearchTest"/>
+        </classes>
+    </test>
+
+    <test name="Get user from reqres api">
+        <parameter name="id" value="1"/>
+        <classes>
+            <class name="api.UserTest">
+                <methods>
+                    <include name="getUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

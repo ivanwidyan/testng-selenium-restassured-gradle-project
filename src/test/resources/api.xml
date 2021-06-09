@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <test name="Get user from reqres api">
+        <parameter name="id" value="1"/>
+        <classes>
+            <class name="api.UserTest">
+                <methods>
+                    <include name="getUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Create user to reqres api">
+        <classes>
+            <class name="api.UserTest">
+                <methods>
+                    <include name="createUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

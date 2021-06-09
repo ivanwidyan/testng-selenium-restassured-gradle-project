@@ -6,7 +6,7 @@
     <parameter name="keyword" value="ivan widyan"/>
     <test verbose="2" preserve-order="true" name="Search google">
         <classes>
-            <class name="SearchTest"/>
+            <class name="web.SearchTest"/>
         </classes>
     </test>
 </suite>
