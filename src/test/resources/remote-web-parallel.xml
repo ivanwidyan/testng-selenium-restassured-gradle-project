@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="tests" thread-count="2">
+
+    <test verbose="2" preserve-order="true" name="Search google in browserstack chrome parallel">
+        <parameter name="driver" value="browserstack"/>
+        <parameter name="remoteBuild" value="browserstack-chrome"/>
+        <parameter name="remoteName" value="Search google in chrome"/>
+        <parameter name="keyword" value="ivan widyan"/>
+        <classes>
+            <class name="web.SearchTest"/>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="Search google in browserstack firefox parallel">
+        <parameter name="driver" value="browserstack"/>
+        <parameter name="remoteBrowser" value="firefox"/>
+        <parameter name="remoteBuild" value="browserstack-firefox"/>
+        <parameter name="remoteName" value="Search google in firefox"/>
+        <parameter name="keyword" value="quality assurance"/>
+        <classes>
+            <class name="web.SearchTest"/>
+        </classes>
+    </test>
+</suite>

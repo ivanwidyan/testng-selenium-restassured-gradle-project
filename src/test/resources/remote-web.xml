@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
 
-    <parameter name="driver" value="chrome"/>
+    <parameter name="driver" value="browserstack"/>
     <parameter name="keyword" value="ivan widyan"/>
-    <test verbose="2" preserve-order="true" name="Search google in chrome parallel">
+    <test verbose="2" preserve-order="true" name="Search google in browserstack chrome">
         <classes>
             <class name="web.SearchTest"/>
         </classes>
