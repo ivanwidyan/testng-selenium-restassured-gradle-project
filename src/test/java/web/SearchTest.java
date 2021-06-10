@@ -17,17 +17,24 @@ public class SearchTest extends PageObject {
     @BeforeClass
     public void setup() {
         System.out.println("open google");
-        driver.get("https://www.google.com/");
+        getDriver().get("https://www.google.com/");
     }
 
     @Test(priority = 1)
     public void verifyTitle() {
-        Assert.assertEquals(driver.getTitle(), "Google", "Title is not matched");
+        if (getDriverName().equalsIgnoreCase("browserstack")) {
+            if (getDriver().getTitle().equals("Google"))
+                getJavascriptExecutor().executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\", \"reason\": \"Title matched!\"}}");
+            else
+                getJavascriptExecutor().executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\":\"failed\", \"reason\": \"Title not matched\"}}");
+        } else {
+            Assert.assertEquals(getDriver().getTitle(), "Google", "Title is not matched");
+        }
     }
 
     @Test(priority = 2)
     public void verifyLogo() {
-        WebElement logo = driver.findElement(By.xpath("//img[@alt='Google']"));
+        WebElement logo = getDriver().findElement(By.xpath("//img[@alt='Google']"));
         Assert.assertTrue(logo.isDisplayed(), "Logo is not displayed");
     }
 
@@ -37,11 +44,11 @@ public class SearchTest extends PageObject {
             alwaysRun = true)
     @Parameters({"keyword"})
     public void search(String keyword) throws Exception {
-        WebElement searchBox = driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"));
+        WebElement searchBox = getDriver().findElement(By.xpath("//div[@class='SDkEP']/div/input"));
         searchBox.sendKeys(keyword);
         searchBox.sendKeys(Keys.ENTER);
 
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
     }
 
     @Test(
@@ -51,7 +58,7 @@ public class SearchTest extends PageObject {
     public void checkSearchResult(String keyword) {
         System.out.println("start");
 
-        List<WebElement> searchResult = driver.findElements(By.xpath("//div/div/div/a/h3"));
+        List<WebElement> searchResult = getDriver().findElements(By.xpath("//div/div/div/a/h3"));
         searchResult.stream().forEach(l -> System.out.println(l.getText()));
         Boolean searchResultVerified = searchResult.stream().allMatch(
                 l -> l.getText().toLowerCase().contains(keyword));

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="tests" thread-count="2">
+
+    <test verbose="2" preserve-order="true" name="Search google in browserstack mobileweb android parallel">
+        <parameter name="driver" value="browserstack"/>
+        <parameter name="remoteDevice" value="Google Pixel 5"/>
+        <parameter name="remoteOsVersion" value="11.0"/>
+        <parameter name="remoteRealMobile" value="true"/>
+        <parameter name="remoteBuild" value="browserstack-mobileweb"/>
+        <parameter name="remoteName" value="Search google in android"/>
+        <parameter name="keyword" value="ivan widyan"/>
+        <classes>
+            <class name="web.SearchTest"/>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="Search google in browserstack mobileweb ios parallel">
+        <parameter name="driver" value="browserstack"/>
+        <parameter name="remoteDevice" value="iPhone 12 Pro"/>
+        <parameter name="remoteOsVersion" value="14"/>
+        <parameter name="remoteRealMobile" value="true"/>
+        <parameter name="remoteBuild" value="browserstack-mobileweb"/>
+        <parameter name="remoteName" value="Search google in ios"/>
+        <parameter name="keyword" value="quality assurance"/>
+        <classes>
+            <class name="web.SearchTest"/>
+        </classes>
+    </test>
+</suite>
